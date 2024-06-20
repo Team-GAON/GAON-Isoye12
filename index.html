@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>0620</title>
 </head>
 <body>
-    
+    <input type="text" id="taewoo" onchange="handleTyping()"> <!-- onchange="": 상태가 변했을 때 -->
+    <script>
+        const handleTyping = () => { /* 화살표 함수 선언 */
+            const taewoo = document.getElementById('taewoo') /* 인풋 태그를 가져옴 */
+            console.log(taewoo.value) /* 콘솔에 출력 */
+        }
+    </script>
 </body>
 </html>
