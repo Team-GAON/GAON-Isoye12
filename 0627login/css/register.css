@@ -1,0 +1,55 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.bg {
+    width: 500px;
+    height: 400px;
+    border: 1px solid #333;
+    text-align: center;
+    background-color: #ffee00;
+}
+#registerId{
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    padding-left: 10px;
+    margin-top: 86px;
+    border: none;
+}
+#registerPassword {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    padding-left: 10px;
+    margin-top: 20px;
+    border: none;
+}
+#registerPhoneNumber {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    padding-left: 10px;
+    margin-top: 20px;
+    border: none;
+}
+p {
+    font-size: 12px;
+    margin-top: 18px;
+    color: #cdbf00;
+}
+a {
+    font-size: 12px;
+    color: #cdbf00;
+}
+
+button {
+    width: 70px;
+    height: 24px;
+    font-size: 14px;
+    margin-top: 36px;
+    background-color: #333;
+    color: white;
+}
