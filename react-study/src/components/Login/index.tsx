@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Login = () => {
 
   interface LoginData { /* 개체의 타입을 지정해주는 인터페이스 */
     username:string;
@@ -20,17 +20,25 @@ const Signup = () => {
     /* ({...prev,[name]:value}): return을 안 쓰고 ()를 이용하여 처리 과정 없이 리턴해줌 */
   }
 
-  const submit = async () => { /* async(비동기) 안에서 코드를 실행시키고, await이 있는 곳의 응답이 올 때까지 기다림 */
+  const submit = async () => { /* async(비동기): 코드를 실행하다가 값을 요청해놓고 다음 코드애서 값을 주면 다시 진행(동시진행) */
     try{
-      const res = await axios.post('https://api.cher1shrxd.me/auth/signup', loginData); /* res는 리스폰스인데 이름은 아무거나 해도됨 */
-      alert('회원가입 성공')
+      const res = await axios.post('https://api.cher1shrxd.me/auth/login',loginData); /* res는 리스폰스인데 이름은 아무거나 해도됨 */
+      console.log(res);
       if(res){
-        navigate('/login')
+        /* 네트워크 콘솔에서 형식 볼 수 있음 */
+        localStorage.setItem('ACCESS_TOKEN',res.data.accessToken); /* 토큰을 빼앗기면 안되니까 만료 기간을 나두어 토큰을 일정 기간만 사용할 수 있게 함 */
+        localStorage.setItem('REFRASH_TOKEN',res.data.refrashToken); /* 사용자의 토큰 만료를 연장 시켜줌 */ 
+        alert('로그인 성공')
+        navigate('/')
       }
     }catch(err:any){
-      if(err.response.status.data === 409){ /* 서버에서 에러 설정해놓음 */
-        alert('이미 사용 중인 아이디입니다');
-        return; /* return을 해서 끝내어 뒤의 코드를 실행시키지 않게 함. 만약 뒤의 조건이 다른 경우에는 필요 X */
+      if(err.response.data.statusCode === 401){
+        alert('비밀번호가 올바르지 않습니다.');
+        return;
+      }
+      if(err.response.data.statusCode === 404){
+        alert('유저를 찾을 수 없습니다.');
+        return;
       }
       alert('네트워크 에러')
     }
@@ -49,9 +57,11 @@ const Signup = () => {
     >
       <h1
         style={{
-          marginBottom: "30px",fontSize: "1.7rem", fontWeight: "400" }}
+          marginBottom: "30px",
+          fontSize: "1.7rem", 
+          fontWeight: "400" }}
       >
-        회원가입
+        로그인
       </h1>
       <input
         type="text"
@@ -69,9 +79,9 @@ const Signup = () => {
         onChange={handleForm}
         value={loginData.password}
       />
-      <button onClick={submit}>회원가입</button>
+      <button onClick={submit}>로그인</button>
     </div>
   );
 };
 
-export default Signup;
+export default Login
