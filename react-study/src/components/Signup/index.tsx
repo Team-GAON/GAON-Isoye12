@@ -22,7 +22,7 @@ const Signup = () => {
 
   const submit = async () => { /* async(비동기) 안에서 코드를 실행시키고, await이 있는 곳의 응답이 올 때까지 기다림 */
     try{
-      const res = await axios.post('https://api.cher1shrxd.me/auth/signup', loginData); /* res는 리스폰스인데 이름은 아무거나 해도됨 */
+      const res = await axios.post('https://gaon.cher1shrxd.me/auth/signup', loginData); /* res는 리스폰스인데 이름은 아무거나 해도됨 */
       alert('회원가입 성공')
       if(res){
         navigate('/login')

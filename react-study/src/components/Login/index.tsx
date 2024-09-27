@@ -22,7 +22,7 @@ const Login = () => {
 
   const submit = async () => { /* async(비동기): 코드를 실행하다가 값을 요청해놓고 다음 코드애서 값을 주면 다시 진행(동시진행) */
     try{
-      const res = await axios.post('https://api.cher1shrxd.me/auth/login',loginData); /* res는 리스폰스인데 이름은 아무거나 해도됨 */
+      const res = await axios.post('https://gaon.cher1shrxd.me/auth/login',loginData); /* res는 리스폰스인데 이름은 아무거나 해도됨 */
       console.log(res);
       if(res){
         /* 네트워크 콘솔에서 형식 볼 수 있음 */
