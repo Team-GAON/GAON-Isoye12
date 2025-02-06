@@ -20,7 +20,7 @@ interface User {
 
 const BoardDetail = () => {
 
-    const [board, setBorad] = useState<Board>();
+    const [board, setBorad] = useState<Board>(); /* board의 타입을 지정해 줌 */
     const params = useParams(); /* 이거 뭔지 알아오기 */
 
     const boardReq = async () => {
@@ -38,7 +38,7 @@ const BoardDetail = () => {
         if (params.id){
             boardReq();
         }
-    }, [params.id]) /* 값이 바뀔 때 마다 갱신시켜줌 */
+    }, [params.id]) /* useEffec: 의존성 배열[params.id] 안에 있는 값이 바뀔 때 마다 실행 */ /* 값이 바뀔 때 마다 갱신시켜줌 */
 
   return (
     <div>

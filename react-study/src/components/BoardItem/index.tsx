@@ -7,18 +7,18 @@ interface Board {
     category:string;
     author:User;
     id:number;
-likesCount:number;
+    likesCount:number;
 }
 
 interface User {
     id:number;
     username:string;
-    board:Board[]; /* 보드 타입의 리스트 */
+    board:Board[]; /* 리스트 안에 담기는 값들이 보드라는 뜻임 */
 }
 
 const BoardItem = (props:Board) => { /* props(값들)의 타입을 Board로 정의 */
 
-    const navigation = useNavigate();
+    const navigation = useNavigate(); /* 네비게이션 훅: 페이지를 움직일 때 사용함 */
 
   return (
     <div
